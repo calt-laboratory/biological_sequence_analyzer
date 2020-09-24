@@ -72,7 +72,7 @@ class BioSeqAnalyzer:
 
     def reverse_complement_sequence(self):
         """
-        Returns a string representing the reverse complement of a DNA sequence.
+        Returns a string representing the reverse complement of a biological sequence.
         :return: str
         """
         if self.sequence_type == "DNA":
