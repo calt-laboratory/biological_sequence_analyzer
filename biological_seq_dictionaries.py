@@ -6,7 +6,7 @@ nucleotide_dict = {'A': 0, 'C': 0, 'G': 0, 'T': 0}
 # DNA complements
 dna_complement_dict = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A'}
 
-# DNA Codon
+# DNA Codon dictionary
 dna_codon_dict = {
     'ATA': 'I', 'ATC': 'I', 'ATT': 'I', 'ATG': 'M',
     'ACA': 'T', 'ACC': 'T', 'ACG': 'T', 'ACT': 'T',
@@ -24,3 +24,22 @@ dna_codon_dict = {
     'TTC': 'F', 'TTT': 'F', 'TTA': 'L', 'TTG': 'L',
     'TAC': 'Y', 'TAT': 'Y', 'TAA': '_', 'TAG': '_',
     'TGC': 'C', 'TGT': 'C', 'TGA': '_', 'TGG': 'W'}
+
+# RNA Codon dictionary
+rna_codon_dict = {
+    'AUA':'I', 'AUC':'I', 'AUU':'I', 'AUG':'M',
+    'ACA':'T', 'ACC':'T', 'ACG':'T', 'ACU':'T',
+    'AAC':'N', 'AAU':'N', 'AAA':'K', 'AAG':'K',
+    'AGC':'S', 'AGU':'S', 'AGA':'R', 'AGG':'R',
+    'CUA':'L', 'CUC':'L', 'CUG':'L', 'CUU':'L',
+    'CCA':'P', 'CCC':'P', 'CCG':'P', 'CCU':'P',
+    'CAC':'H', 'CAU':'H', 'CAA':'Q', 'CAG':'Q',
+    'CGA':'R', 'CGC':'R', 'CGG':'R', 'CGU':'R',
+    'GUA':'V', 'GUC':'V', 'GUG':'V', 'GUU':'V',
+    'GCA':'A', 'GCC':'A', 'GCG':'A', 'GCU':'A',
+    'GAC':'D', 'GAU':'D', 'GAA':'E', 'GAG':'E',
+    'GGA':'G', 'GGC':'G', 'GGG':'G', 'GGU':'G',
+    'UCA':'S', 'UCC':'S', 'UCG':'S', 'UCU':'S',
+    'UUC':'F', 'UUU':'F', 'UUA':'L', 'UUG':'L',
+    'UAC':'Y', 'UAU':'Y', 'UAA':'_', 'UAG':'_',
+    'UGC':'C', 'UGU':'C', 'UGA':'_', 'UGG':'W'}
