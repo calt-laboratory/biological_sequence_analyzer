@@ -7,9 +7,7 @@ from biological_seq_dictionaries import *
 import random
 from collections import Counter
 
-
 class DNASeqAnalyzer:
-
 
     def __init__(self, sequence = 'ACGT', sequence_type = "DNA"):
         """
@@ -20,7 +18,7 @@ class DNASeqAnalyzer:
         self.sequence = sequence.upper()
         self.sequence_type = sequence_type
 
-    def generate_sequence(self, nucleotides = "ACTG", sequence_length = 100):
+    def generate_sequence(self, nucleotides = "ACGT", sequence_type = "DNA", sequence_length = 100):
         """
         Returns a string representing the randomly generated biological sequence.
         :param nucleotides (str):
@@ -28,7 +26,7 @@ class DNASeqAnalyzer:
         :return: str
         """
         random_sequence = "".join([random.choice(nucleotides) for i in range(sequence_length)])
-        self.__init__(random_sequence)
+        self.__init__(random_sequence, sequence_type)
 
     def sequence_length(self):
         """
@@ -49,9 +47,14 @@ class DNASeqAnalyzer:
         Returns a dictionary comprising the frequency of each nucleotide in a given sequence.
         :return: dict
         """
-        for i in self.sequence:
-            nucleotide_dict[i] += 1
-        return nucleotide_dict
+        if self.sequence_type == "DNA":
+            for i in self.sequence:
+                dna_nucleotide_dict[i] += 1
+            return dna_nucleotide_dict
+        if self.sequence_type == "RNA":
+            for i in self.sequence:
+                rna_nucleotide_dict[i] += 1
+            return rna_nucleotide_dict
 
     def gc_content(self):
         """
@@ -72,14 +75,20 @@ class DNASeqAnalyzer:
         Returns a string representing the reverse complement of a DNA sequence.
         :return: str
         """
-        return ''.join([dna_complement_dict[nuc] for nuc in self.sequence])[::-1]
+        if self.sequence_type == "DNA":
+            return ''.join([dna_complement_dict[nuc] for nuc in self.sequence])[::-1]
+        elif self.sequence_type == "RNA":
+            return ''.join([rna_complement_dict[nuc] for nuc in self.sequence])[::-1]
 
     def dna_2_rna(self):
         """
         Returns a string representing the RNA sequence translated from a DNA sequence.
         :return: str
         """
-        return self.sequence.replace('T', 'U')
+        if self.sequence_type == "DNA":
+            return self.sequence.replace('T', 'U')
+        else:
+            return "Given sequence is not a DNA sequence!"
 
     def codon_bias(self, amino_acid):
         """
@@ -89,9 +98,14 @@ class DNASeqAnalyzer:
         :return: dict
         """
         codon_list = []
-        for i in range(0, len(self.sequence) - 2, 3):
-            if dna_codon_dict[self.sequence[i:i + 3]] == amino_acid:
-                codon_list.append(self.sequence[i:i + 3])
+        if self.sequence_type == "DNA":
+            for i in range(0, len(self.sequence) - 2, 3):
+                if dna_codon_dict[self.sequence[i:i + 3]] == amino_acid:
+                    codon_list.append(self.sequence[i:i + 3])
+        if self.sequence_type == "RNA":
+            for i in range(0, len(self.sequence) - 2, 3):
+                if rna_codon_dict[self.sequence[i:i + 3]] == amino_acid:
+                    codon_list.append(self.sequence[i:i + 3])
 
         frequency_codon_dict = dict(Counter(codon_list))
         sum_codons = sum(frequency_codon_dict.values())
