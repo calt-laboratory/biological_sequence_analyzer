@@ -7,7 +7,7 @@ from biological_seq_dictionaries import *
 import random
 from collections import Counter
 
-class DNASeqAnalyzer:
+class BioSeqAnalyzer:
 
     def __init__(self, sequence = 'ACGT', sequence_type = "DNA"):
         """
