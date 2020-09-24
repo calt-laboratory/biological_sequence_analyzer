@@ -1,10 +1,16 @@
 # Dictionaries comprising biological notations including DNA nucleotides, DNA complements, Codons
 
 # DNA nucleotides
-nucleotide_dict = {'A': 0, 'C': 0, 'G': 0, 'T': 0}
+dna_nucleotide_dict = {'A': 0, 'C': 0, 'G': 0, 'T': 0}
+
+# RNA nucleotides
+rna_nucleotide_dict = {'A': 0, 'C': 0, 'G': 0, 'U': 0}
 
 # DNA complements
 dna_complement_dict = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A'}
+
+# RNA complements
+rna_complement_dict = {'A': 'U', 'C': 'G', 'G': 'C', 'U': 'A'}
 
 # DNA Codon dictionary
 dna_codon_dict = {
