@@ -1,4 +1,5 @@
-# Class for basic DNA sequence analysis
+##### Class for basic DNA sequence analysis
+##### Author: Christoph Alt
 
 # Import files
 from biological_seq_dictionaries import *
@@ -8,6 +9,9 @@ import random
 from collections import Counter
 
 class BioSeqAnalyzer:
+    """
+    Class for analyzing biological sequences (RNA, DNA).
+    """
 
     def __init__(self, sequence = 'ACGT', sequence_type = "DNA"):
         """
@@ -22,12 +26,11 @@ class BioSeqAnalyzer:
         """
         print(f'BiolgicalSeqAnalyzer(sequence={self.sequence}, sequence_type={self.sequence_type}')
 
-
     def __str__(self):
         """
         Returns an informal representation of an instanced as string.
         """
-        print(f'Biolgical Sequence Analyzer: Seq = {self.sequence}, Seq_Type = {self.seq_type}')
+        print(f'Biolgical Sequence Analyzer: Seq = {self.sequence}, Seq_Type = {self.sequence_type}')
 
     def generate_sequence(self, nucleotides = "ACGT", sequence_type = "DNA", sequence_length = 100):
         """
@@ -110,3 +113,13 @@ class BioSeqAnalyzer:
         percentage_codon_dict = {codon: round(frequency_codon_dict[codon] / sum_codons, 2) for codon in
                                  frequency_codon_dict}
         return percentage_codon_dict
+
+
+    def rna_2_protein(self):
+        """
+        Returns a string representing a amino acid sequence translated from a RNA sequence.
+        """
+        if self.sequence_type == "RNA":
+            return ''.join([rna_codon_dict[self.sequence[i:i + 3]] for i in range(0, len(self.sequence) - 2, 3)])
+        else:
+            print('Given sequence is not a RNA!')
