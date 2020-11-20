@@ -7,6 +7,7 @@ from biological_seq_dictionaries import *
 # Import modules
 import random
 from collections import Counter
+import matplotlib.pyplot as plt
 
 class BioSeqAnalyzer:
     """
@@ -94,7 +95,7 @@ class BioSeqAnalyzer:
         else:
             return "Given sequence is not a DNA sequence!"
 
-    def codon_bias(self, amino_acid):
+    def codon_bias(self, amino_acid, viz = True):
         """
         Returns a dictionary representing the frequency of codons of a given amino acid.
         """
@@ -112,8 +113,15 @@ class BioSeqAnalyzer:
         sum_codons = sum(frequency_codon_dict.values())
         percentage_codon_dict = {codon: round(frequency_codon_dict[codon] / sum_codons, 2) for codon in
                                  frequency_codon_dict}
-        return percentage_codon_dict
 
+        if viz == True:
+            labels = list(percentage_codon_dict.keys())
+            vals = list(percentage_codon_dict.values())
+            plt.pie(vals, labels = vals , normalize = False)
+            plt.legend(labels)
+            plt.title(f'Frequency of codons for the amino acid: {amino_acid}')
+            plt.show()
+        return percentage_codon_dict
 
     def rna_2_protein(self):
         """
