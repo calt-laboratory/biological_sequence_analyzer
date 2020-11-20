@@ -16,6 +16,19 @@ class BioSeqAnalyzer:
         self.sequence = sequence.upper()
         self.sequence_type = sequence_type
 
+    def __repr__(self):
+        """
+        Returns a formal representation of an instanced object as string.
+        """
+        print(f'BiolgicalSeqAnalyzer(sequence={self.sequence}, sequence_type={self.sequence_type}')
+
+
+    def __str__(self):
+        """
+        Returns an informal representation of an instanced as string.
+        """
+        print(f'Biolgical Sequence Analyzer: Seq = {self.sequence}, Seq_Type = {self.seq_type}')
+
     def generate_sequence(self, nucleotides = "ACGT", sequence_type = "DNA", sequence_length = 100):
         """
         Returns a string representing the randomly generated biological sequence.
